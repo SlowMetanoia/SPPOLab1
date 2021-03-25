@@ -10,7 +10,7 @@ public class GraphBuilder<NodeT,EdgeT> extends AbstractBuilder<Graph>{
     private String description;
     private int buildedNum;
 
-    GraphBuilder(){
+    public GraphBuilder(){
         name = null;
         description = null;
         nodes = new ArrayList<Node<NodeT>>();
