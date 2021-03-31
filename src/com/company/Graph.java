@@ -5,16 +5,16 @@ import java.util.function.Function;
 
 public class Graph<NodeT,EdgeT> {
 
-    final private ArrayList<Node<NodeT>> nodes;
-    final private ArrayList<Edge<EdgeT>> edges;
+    final private ArrayList<Node> nodes;
+    final private ArrayList<Edge> edges;
     final private String name;
     final private String description;
 
-    public ArrayList<Node<NodeT>> getNodes() {
+    public ArrayList<Node> getNodes() {
         return nodes;
     }
 
-    public ArrayList<Edge<EdgeT>> getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 
@@ -26,27 +26,27 @@ public class Graph<NodeT,EdgeT> {
         return description;
     }
 
-    public Graph(ArrayList<Node<NodeT>> nodes, ArrayList<Edge<EdgeT>> edges, String name, String description) {
+    public Graph(ArrayList<Node> nodes, ArrayList<Edge> edges, String name, String description) {
         this.nodes = nodes;
         this.edges = edges;
         this.name = name;
         this.description = description;
     }
 
-    public ArrayList<Node<NodeT>> filterNodes(Function<Node<NodeT>,Boolean> filter)
+    public ArrayList<Node> filterNodes(Function<Node,Boolean> filter)
     {
-        ArrayList<Node<NodeT>> nodeList = new ArrayList<>();
-        for (Node<NodeT> node: this.nodes) {
+        ArrayList<Node> nodeList = new ArrayList<>();
+        for (Node node: this.nodes) {
             if(filter.apply(node))
                 nodeList.add(node);
         }
         return nodeList;
     }
 
-    public ArrayList<Edge<EdgeT>> filterEdges(Function<Edge<EdgeT>,Boolean> filter)
+    public ArrayList<Edge> filterEdges(Function<Edge,Boolean> filter)
     {
-        ArrayList<Edge<EdgeT>> edgeList = new ArrayList<>();
-        for (Edge<EdgeT> edge:edges) {
+        ArrayList<Edge> edgeList = new ArrayList<>();
+        for (Edge edge:edges) {
             if (filter.apply(edge))
                 edgeList.add(edge);
         }

@@ -1,18 +1,55 @@
 package com.company;
 
-public class Edge<T> {
-    final public String name;
-    final public String description;
-    final public T value;
-    final public Node source;
-    final public Node receiver;
+public class Edge implements IConnectable{
 
-    public Edge(String name, String description, T value, Node source, Node receiver) {
+    private Graph graph;
+    final private String name;
+    final private String description;
+    final private Node source;
+    final private Node receiver;
+
+    public void setGraph(Graph graph) {
+        this.graph = graph;
+    }
+
+    public Graph getGraph() {
+        return graph;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Node getSource() {
+        return source;
+    }
+
+    public Node getReceiver() {
+        return receiver;
+    }
+
+    public Edge(String name, String description, Node source, Node receiver) {
         this.name = name;
         this.description = description;
-        this.value = value;
         this.source = source;
         this.receiver = receiver;
     }
+
     boolean isMember(Node node) {return node == source||node == receiver;}
+    boolean isSource(Node node) {return node == source;}
+    boolean isReceiver(Node node) {return node == receiver;}
+
+    @Override
+    public Boolean IsNodeConnected(Node node) {
+        return isMember(node);
+    }
+
+    @Override
+    public Boolean IsEdgeConnected(Edge edge) {
+        return edge.isMember(receiver);
+    }
 }

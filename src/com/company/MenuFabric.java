@@ -13,7 +13,6 @@ public class MenuFabric {
         {
             result.AddOption("SetNewNode","...",(String str)->{
                 String[] StringArr = str.split(" ");
-
             });
         }
         return result;
